@@ -34,7 +34,7 @@ app.post('/login', async (req:any, res:Response, next:NextFunction)=>{
         try{
             let user = await getUserByusernameAndPassword(username, password)
             //instead of setting session, build and send back a jwt
-            let token = jwt.sign(user, 'thisIsASecret', {expiresIn: '1h'})//THE SECRET should be in an env var
+            let token = jwt.sign(user, 'thisIsASecret', {expiresIn: '5h'})//THE SECRET should be in an env var
             res.header('Authorization', `Bearer ${token}`)
             // so we can use that data in other requests
             res.json(user)
